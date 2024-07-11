@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* General reset for margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style for the outer div */
+#outer {
+    background-color: lightblue;
+    padding: 20px;
+    border: 2px solid blue;
+    text-align: center;
+}
+
+/* Style for the middle div */
+#middle {
+    background-color: lightgreen;
+    padding: 20px;
+    border: 2px solid green;
+    text-align: center;
+}
+
+/* Style for the inner div */
+#Inner {
+    background-color: lightcoral;
+    padding: 20px;
+    border: 2px solid red;
+    text-align: center;
+}
+
+/* Additional styles for better visibility */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+    </style>
+</head>
+<body>
+    <section>
+        <div id="outer">Outer
+         <div id="middle">Middle
+            <div id="Inner">Inner </div>
+         </div>
+
+        </div>
+
+    </section>
+
+    <script>
+       const callouter = (event) => {
+            console.table([{
+                Description: "I am an outer table",
+                Target: event.target,
+                CurrentTarget: event.currentTarget,
+            }]);
+
+           
+        };
+
+        const callmiddle =()=>{
+            console.table([{
+                Description: "I am an Middle Table",
+                Target: event.target,
+                CurrentTarget: event.currentTarget,
+            }]);
+            // event.stopPropagation();
+
+            //// Using To Stop the Propogation JavaScript :
+        }
+
+
+        const callInner =()=>{
+            console.table([{
+                Description: "I am an Inner  Table",
+                Target: event.target,
+                CurrentTarget: event.currentTarget,
+            }]);
+            // event.stopPropagation();
+        }
+        // document.getElementById("outer").addEventListener("click", callouter);
+        // document.getElementById("middle").addEventListener("click", callmiddle);
+        // document.getElementById("Inner").addEventListener("click", callInner);
+
+
+        document.getElementById("outer").addEventListener("click", callouter, true);
+        document.getElementById("middle").addEventListener("click", callmiddle, true);
+        document.getElementById("Inner").addEventListener("click", callInner,true);
+    </script>
+</body>
+</html>

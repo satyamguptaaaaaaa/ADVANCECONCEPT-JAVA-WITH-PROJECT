@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+ body{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+    
+    justify-content: center;
+    align-items: center;
+   
+ }
+        #Box{
+          
+            height: 100px;
+            width: 100px;
+            
+        }
+
+        .box2{
+            background-color: blue;
+            border-radius: 50%;
+            translate: -30rem 0;
+            transition: 1s;
+        }
+
+        .Box3{
+            background-color: blueviolet;
+            border-radius: 20%;
+            height: 120px;
+            width: 130px;
+            transition: 1s;
+        }
+
+        .box4{
+            background-color:green;
+            border-radius: 50%;
+            translate: 30rem 0;
+            
+            transition: 1s;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div id="Box"> </div>
+
+    <Button id="Click"> Click </Button>
+    <Button id="DoubleClick">DoubleClick</Button>
+
+
+    <script>
+
+  const  addventMouse=()=>{
+     Box.classList.add("box2");
+  }
+
+  const addDouble=()=>{
+    Box.classList.add("Box3");
+  }
+
+  const MouseDown=()=>{
+    Box.classList.add("box4");
+  }
+
+      let Box=  document.getElementById('Box');
+      let Click=document.getElementById('Click');
+      let dblclick=document.getElementById('DoubleClick')
+
+
+
+      dblclick.addEventListener("click",addventMouse);
+
+      Click.addEventListener("dblclick",addDouble);
+
+      Box.addEventListener("mousedown",MouseDown);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventKeyword :</title>
+</head>
+<body>
+    
+    Input Value:<input type="text" id="Value">
+ <p class="Presed">KeyPressed:</p>
+ <p class=" keycode">keyCode:</p>
+ <p class="KeyType"> KeyBordType:</p>
+ <p class="Charcode">Char code:</p>
+
+ <script>
+    const HandelKeypress=(event)=>{
+        console.log(event);
+    //     console.log("KeyPreesed ",event.key)
+    //     console.log(" key code :",event.code)
+    //    console.log("KeyType",event.type)
+
+    document.querySelector(".Presed").textContent=`KeyPreesed: ${event.key}`
+
+    document.querySelector(".keycode").textContent=`keyCode: ${event.code}`
+
+    document.querySelector(".KeyType").textContent=`KeyBordType:: ${event.type}`
+
+    document.querySelector(".Charcode").textContent=`KeyBordType:: ${event.key.charCodeAt(0)}`;
+    };
+
+
+
+
+   
+let input =document.getElementById('Value');
+
+input.addEventListener("keyup",HandelKeypress);
+
+
+ </script>
+</body>
+</html>

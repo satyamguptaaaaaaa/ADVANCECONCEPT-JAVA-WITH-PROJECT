@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+    .container {
+    width: 100%;
+    text-align: center;
+}
+
+.clockHolder {
+    display: inline-block;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.timeHolder {
+    position: relative;
+}
+
+.timeOption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.timeOption i {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.mainDiv {
+    margin-top: 40px;
+}
+
+#clock {
+    font-size: 50px;
+    font-weight: bold;
+    color: #333;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="clockHolder">
+            <div class="timeHolder">
+                <div class="timeOption">
+                    <i class="fas fa-clock" data-title="Time"></i>
+                    <i class="fas fa-clock" data-title="Stopwatch"></i>
+                    <i class="fas fa-clock" data-title="CountDown"></i>
+                </div>
+                <div class="mainDiv">
+                    <p id="clock">
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const currentTime=()=>{
+          let Current= new Date().toLocaleTimeString();console.log(Current);
+
+          document.getElementById("clock").innerText=Current;
+
+        };
+       
+        let Interval=setInterval(()=>{
+            currentTime();
+        },1000);
+
+        // setTimeout(()=>{
+        //     clearInterval(Interval);
+        // },5000);
+
+    </script>
+</body>
+</html>

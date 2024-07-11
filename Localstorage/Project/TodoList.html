@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        html {
+            color: #fff;
+            font-size: 62.5%;
+        }
+        body {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 100px;
+            background-color: #1b1b1b;
+        }
+        h1 {
+            font-size: 3.6rem;
+            margin-top: 4rem;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 70vh;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        input {
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+            font-size: 16px;
+        }
+        input:focus {
+            border-color: #4CAF50;
+        }
+        li {
+            cursor: pointer;
+            list-style-type: circle;
+            margin: 2rem 0;
+            text-transform: capitalize;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        li:hover {
+            color: rgb(199, 134, 13);
+        }
+        .mainClass {
+            width: 30rem;
+            display: grid;
+            grid-template-columns: 1fr 0.3fr;
+            align-items: center;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Todo list</h1>
+    <form>
+        <div>
+            <input type="text" id="inputValue">
+            <button class="btn">Add Todo</button>
+        </div>
+        <section class="todo-lists-elem"></section>
+    </form>
+
+    <script>
+        const getTodoList = () => {
+            return JSON.parse(localStorage.getItem("Addtodu")) || [];
+        };
+
+        const adsTodoListLocalStorage = (LocalToduList) => {
+            localStorage.setItem("Addtodu", JSON.stringify(LocalToduList));
+        }
+
+        let LocalToduList = getTodoList() || [];
+
+        
+        const addTodoDynamicElement = (cureElement) => {
+            const divElement = document.createElement("div");
+            divElement.classList.add("mainClass");
+            divElement.innerHTML = `<li>${cureElement}</li><button class="deleteBtn">Delete</button>`;
+            maintodoElem.append(divElement);
+        };
+        const addTodolist = (e) => {
+            e.preventDefault();
+            const localStorageValue = inputvalue.value.trim().toLowerCase();
+            inputvalue.value = "";
+
+            if (localStorageValue !== "" && !LocalToduList.includes(localStorageValue)) {
+                LocalToduList.push(localStorageValue);
+                LocalToduList = [...new Set(LocalToduList)];
+                adsTodoListLocalStorage(LocalToduList);
+
+                const divElement = document.createElement("div");
+                divElement.classList.add("mainClass");
+                divElement.innerHTML = `<li>${localStorageValue}</li><button class="deleteBtn">Delete</button>`;
+                maintodoElem.append(divElement);
+            }
+        };
+        const ShowTodoList = () => {
+            LocalToduList.forEach((cureElement) => {
+                addTodoDynamicElement(cureElement);
+            });
+        }
+
+        const maintodoElem = document.querySelector(".todo-lists-elem");
+        const inputvalue = document.getElementById("inputValue");
+        const btn = document.querySelector(".btn");
+
+        btn.addEventListener("click", addTodolist);
+
+        ShowTodoList();
+
+        const reMoveToduElement = (e) => {
+            const todoToRemove = e.target;
+            let todoListContent = todoToRemove.previousElementSibling.innerText.trim();
+
+            LocalToduList = LocalToduList.filter((current) => {
+                return current !== todoListContent.toLowerCase();
+            });
+            adsTodoListLocalStorage(LocalToduList);
+            todoToRemove.parentElement.remove();
+        }
+
+        maintodoElem.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (e.target.classList.contains("deleteBtn")) {
+                reMoveToduElement(e);
+            }
+        });
+
+
+        //// My Project is finally Finished :
+    </script>
+</body>
+</html>

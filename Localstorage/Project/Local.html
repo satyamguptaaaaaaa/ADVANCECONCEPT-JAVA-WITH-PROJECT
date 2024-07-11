@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage</title>
+
+    <style>
+        body{
+            background-color: aqua;
+        }
+       div{
+        display: flex;
+        justify-content: center;align-items: center;
+        gap: 20px;
+       }
+        button{
+            margin-top: 200px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(91, 26, 152);
+            padding: 14px 10px 14px 10px ;
+
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <button id="btn1">Set Data LocalStorage</button>
+    <button id="btn2">get Data LocalStorage</button>
+    <button id="btn3"> Remove Data LocalStorage </button>
+
+    <script>
+        const StudentBiodata={
+            fistname:"Satyam",
+            lastname:"Gupta",
+            age:19,
+            gender:"Male",
+            grade:"A+",
+            courses:["Math","Science","English"],
+            address:{
+                Street:"622/sectore-3",
+                city:"Ahemdabad",
+                state:"Gujrat",
+                zipCode:"380061",
+            },
+
+            }
+
+const setlocalStorage =()=>{
+localStorage.setItem("StudentBio",JSON.stringify(StudentBiodata));
+}
+
+const GetlocalStorage=()=>{
+
+ let data=  JSON.parse(localStorage.getItem("StudentBio")
+);
+
+console.log(data);
+
+}
+const removeLocalStorage=()=>{
+localStorage.removeItem("StudentBio");
+}
+        let btn1=document.getElementById("btn1");
+        let btn2=document.getElementById("btn2");
+        let btn3=document.getElementById("btn3");
+        
+        btn1.addEventListener("click", ()=>{
+            setlocalStorage()
+        });
+        btn2.addEventListener("click", ()=>{
+        GetlocalStorage()
+        });
+
+        btn3.addEventListener("click",()=>{
+            removeLocalStorage();
+        })
+        
+    </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style> 
+
+    body{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 190px;
+
+        background-image: linear-gradient(to right,
+        rgb(252, 31, 31),
+        rgb(15, 15, 74)
+        );
+    }
+
+    div{
+        display: flex;
+        justify-content: center ;
+        align-items: center;
+       
+    }
+    
+    button{
+        padding: 10px 20px 10px 20px ;
+        margin: 5px;
+        border: none;
+        
+    }
+
+    button :hover{
+        text-shadow: red 2px 2px 2px 2px;
+    }
+    #btn1{
+        background-color: rgb(120, 22, 211);
+    }
+
+    #btn2{
+        background-color: rgb(110, 164, 17);
+    }
+
+
+    #tt{
+        height: 90px;
+        width: 280px;
+        border: 2px solid black;
+     text-align: center;
+     background-color: rgba(255, 255, 255, 0.922);
+     border: none;
+     border-radius: 10px;
+    }
+  
+    </style>
+</head>
+<body>
+    <div>
+       
+    <button id="btn1">#a433d</button>
+    <button id="btn2">#ab23y</button>
+</div>
+
+<h2>This is copy board</h2>
+
+<div id="tt">
+    background-image: linear-gradient(to right,
+    rgb(252, 31, 31),
+    rgb(15, 15, 74)
+    );
+</div>
+
+<script>
+
+
+let rbg1="#004773"
+let rbg2="#54d542"
+    const handler=()=>{
+        let color ="#";
+        let val="0123456789abcdef"
+
+        for(let i=0;i<6;i++){
+          color=color+val[Math.floor(Math.random()*16)];
+        }
+        return color;
+    }
+
+    const handle=()=>{
+        rbg1=handler();
+
+        btn1.textContent=rbg1;
+       document.body.style.backgroundImage=`  linear-gradient(to right,
+    ${rbg1},
+    ${rbg2}
+    )`
+    copyBox.innerHTML=` background-image: linear-gradient(to right,
+    ${rbg1},
+   ${rbg2}
+    );`
+
+    }
+
+
+
+    const handleClick2=()=>{
+        rbg2=handler();
+
+        btn2.textContent=rbg2;
+       document.body.style.backgroundImage=`  linear-gradient(to right,
+    ${rbg1},
+    ${rbg2}
+    )`
+
+    copyBox.innerHTML=` background-image: linear-gradient(to right,
+    ${rbg1},
+   ${rbg2}
+    );`
+
+
+    }
+    let copyBox=document.getElementById("tt");
+    let btn1= document.getElementById("btn1");
+    let btn2=document.getElementById("btn2");
+
+    btn1.addEventListener("click", handle);
+    btn2.addEventListener("click",handleClick2);
+    copyBox.addEventListener("click", ()=>{
+        navigator.clipboard.writeText(copyBox.innerText);
+    })
+
+
+
+
+</script>
+
+
+</body>
+</html>
